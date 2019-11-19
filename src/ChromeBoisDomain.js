@@ -33,8 +33,8 @@ export default class ChromeBoisDomain extends Component {
   
   handleKeyDown = (event) => {
     let e = event;
+    console.log(e);
     if (e.key === "a") {
-      console.log("a");
       resize("+");
     } else if (e.key === "s") {
       resize("-");
