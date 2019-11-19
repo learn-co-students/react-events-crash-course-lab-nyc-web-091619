@@ -10,6 +10,8 @@ export default class ChromeBoisDomain extends Component {
      * function that has been provided and is already imported
      * (`drawChromeBoiAtCoords` expects two arguments, an x and a y coordinate)
      */
+
+     drawChromeBoiAtCoords(event.clientX, event.clientY)
   }
   
   /* TODO: Create an event handler which, when fired, invokes the provided
@@ -17,6 +19,14 @@ export default class ChromeBoisDomain extends Component {
    * listener that should fire it!
    */
    
+    handleKeyDown = (event) => {
+      if (event.key === 'a'){
+        resize('+')
+      } else if (event.key === 's') {
+        resize('-')
+      }
+    }
+
   /* TODO: Add an event listener to the `<canvas>` element to capture when a key
   /* is pressed. When a key is pressed, an event handler should invoke the the
   /* provided `resize` function with a single argument of either '+' or '-'
@@ -28,6 +38,8 @@ export default class ChromeBoisDomain extends Component {
     return (
       <canvas 
         onMouseMove={this.handleMouseMove}
+        onClick={()=> {toggleCycling()}}
+        onKeyDown={this.handleKeyDown}
         width='900'
         height='600'
         tabIndex="0">
@@ -35,3 +47,11 @@ export default class ChromeBoisDomain extends Component {
     )
   }
 }
+
+
+// <ChromeBoisDomain />
+// ✓ invokes the `drawChromeBoiAtCoords` method within `handleMouseMove`, passing the captured x and y values of the mouse from the event
+// ✓ has an event listener for clicks on the <canvas> element that triggers `toggleCycling`
+// ✓ has an event listener for key presses on the <canvas> element that triggers `resize`
+// ✓ when the 'a' key is pressed, `resize` is invoked with the argument of '+'
+// ✓ when the 's' key is pressed, `resize` is invoked with the argument of '-'
